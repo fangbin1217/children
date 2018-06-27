@@ -1,0 +1,26 @@
+{
+	"groups": [
+		{
+			"name": "preload",
+			"keys": "bg22_jpg,description_json,pictures_json"
+		}
+	],
+	"resources": [
+		{
+			"name": "bg22_jpg",
+			"type": "image",
+			"url": "assets/bg22.jpg"
+		},
+		{
+			"name": "description_json",
+			"type": "json",
+			"url": "config/description.json"
+		},
+		{
+			"name": "pictures_json",
+			"type": "sheet",
+			"url": "assets/pictures.json",
+			"subkeys": "button_down,button_index1,button_up,checkbox_select_disabled,checkbox_select_down,checkbox_select_up,checkbox_unselect,selected,border,header,thumb_pb,track_pb,radiobutton_select_disabled,radiobutton_select_down,radiobutton_select_up,radiobutton_unselect,roundthumb,track_sb,thumb,track,tracklight,handle,off,on"
+		}
+	]
+}

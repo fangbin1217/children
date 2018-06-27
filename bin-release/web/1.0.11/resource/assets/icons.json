@@ -1,0 +1,6 @@
+{"file":"icons.png","frames":{
+"button_index1":{"x":1,"y":1,"w":128,"h":128,"offX":0,"offY":0,"sourceW":128,"sourceH":128},
+"radiobutton_select_disabled":{"x":179,"y":1,"w":22,"h":22,"offX":0,"offY":0,"sourceW":22,"sourceH":22},
+"radiobutton_select_down":{"x":155,"y":1,"w":22,"h":22,"offX":0,"offY":0,"sourceW":22,"sourceH":22},
+"radiobutton_select_up":{"x":131,"y":1,"w":22,"h":22,"offX":0,"offY":0,"sourceW":22,"sourceH":22},
+"radiobutton_unselect":{"x":203,"y":1,"w":22,"h":22,"offX":0,"offY":0,"sourceW":22,"sourceH":22}}}

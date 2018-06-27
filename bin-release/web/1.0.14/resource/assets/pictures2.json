@@ -1,0 +1,17 @@
+{"file":"pictures2.png","frames":{
+"avatar":{"x":810,"y":360,"w":190,"h":190,"offX":0,"offY":0,"sourceW":190,"sourceH":190},
+"awardCup":{"x":824,"y":838,"w":92,"h":91,"offX":2,"offY":3,"sourceW":96,"sourceH":96},
+"bomb":{"x":841,"y":155,"w":145,"h":156,"offX":7,"offY":2,"sourceW":160,"sourceH":160},
+"clock":{"x":841,"y":1,"w":155,"h":152,"offX":2,"offY":6,"sourceW":160,"sourceH":160},
+"enterRoom":{"x":1,"y":360,"w":807,"h":359,"offX":14,"offY":0,"sourceW":840,"sourceH":360},
+"first":{"x":592,"y":831,"w":114,"h":108,"offX":0,"offY":0,"sourceW":114,"sourceH":108},
+"goBack":{"x":99,"y":851,"w":70,"h":75,"offX":3,"offY":0,"sourceW":76,"sourceH":76},
+"message":{"x":1,"y":851,"w":96,"h":80,"offX":0,"offY":8,"sourceW":96,"sourceH":96},
+"myRoom":{"x":1,"y":1,"w":838,"h":357,"offX":1,"offY":1,"sourceW":840,"sourceH":360},
+"second":{"x":708,"y":838,"w":114,"h":108,"offX":0,"offY":0,"sourceW":114,"sourceH":108},
+"setUp":{"x":708,"y":721,"w":96,"h":96,"offX":0,"offY":0,"sourceW":96,"sourceH":96},
+"share":{"x":810,"y":706,"w":150,"h":130,"offX":0,"offY":9,"sourceW":150,"sourceH":150},
+"sitDown":{"x":918,"y":838,"w":104,"h":79,"offX":1,"offY":9,"sourceW":106,"sourceH":96},
+"spring":{"x":810,"y":552,"w":142,"h":152,"offX":4,"offY":4,"sourceW":150,"sourceH":160},
+"third":{"x":592,"y":721,"w":114,"h":108,"offX":0,"offY":0,"sourceW":114,"sourceH":108},
+"victory":{"x":1,"y":721,"w":589,"h":128,"offX":6,"offY":0,"sourceW":595,"sourceH":133}}}

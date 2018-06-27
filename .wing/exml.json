@@ -1,0 +1,23 @@
+{
+  "1642624063b": {
+    "path": "components/IndexCenterButton.ts",
+    "class": "IndexCenterButton",
+    "parentPath": "",
+    "bindingDataTestObj": [],
+    "backgroundX": 0,
+    "backgroundY": 0,
+    "backgroundWidth": -1,
+    "backgroundHeight": -1,
+    "useBgImage": true,
+    "useBgColor": false,
+    "backgroundAlpha": 100,
+    "backgroundType": "null",
+    "backgroundImage": "/data/www/bj/images/129.png"
+  },
+  "global": {
+    "globalBindingDataTestObj": [],
+    "globalAutoLayerMarkEnable": true,
+    "globalRulerEnable": false,
+    "globalAdsorbEnable": false
+  }
+}
