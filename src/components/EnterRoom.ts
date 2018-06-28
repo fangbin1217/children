@@ -1,21 +1,16 @@
-class IndexTopBanner extends eui.Component implements  eui.UIComponent {
+class EnterRoom extends eui.Component implements  eui.UIComponent {
 
-
-	private static shared:IndexTopBanner;
+    private static shared:EnterRoom;
 
 	public static Shared() {
-        if(IndexTopBanner.shared == null) {
-            IndexTopBanner.shared = new IndexTopBanner();
+        if(EnterRoom.shared == null) {
+            EnterRoom.shared = new EnterRoom();
         }
-        return IndexTopBanner.shared;
+        return EnterRoom.shared;
     }
 
-	private stageW:number;
-	private stageH:number;
 	private constructor() {
 		super();
-		this.stageW = egret.MainContext.instance.stage.stageWidth;
-		this.stageH = egret.MainContext.instance.stage.stageHeight;
 		this.createView();
 	}
 
@@ -30,15 +25,16 @@ class IndexTopBanner extends eui.Component implements  eui.UIComponent {
 		super.childrenCreated();
 	}
 	 createView(): void {
+		//banner 2
 		let sprcon:egret.Sprite = new egret.Sprite();
 		this.addChild(sprcon);
 		let topMask = new egret.Shape();
 		topMask.name = "indexTopBanner";
         topMask.graphics.beginFill(0xFAFAFA, 0.1);
-        topMask.graphics.drawRect(0, 0, this.stageW, this.stageH*1.2/10);
+        topMask.graphics.drawRect(0, 0, egret.MainContext.instance.stage.stageWidth, egret.MainContext.instance.stage.stageHeight*1.2/10);
         topMask.graphics.endFill();
         topMask.x = 0;
-        topMask.y = -this.stageH*1.2/10;
+        topMask.y = -egret.MainContext.instance.stage.stageHeight*1.2/10;
         this.addChild(topMask);
 		let tw = egret.Tween.get( topMask );
         tw.to( {x:0,y:0}, 700,egret.Ease.sineOut );

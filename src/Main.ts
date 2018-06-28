@@ -103,25 +103,11 @@ class Main extends eui.UILayer {
      */
     protected createGameScene(): void {
 
-        //set background image
-        let sky = this.createBitmapByName("bgIndex_jpg");
-        this.addChild(sky);
-        let stageW = this.stage.stageWidth;
-        let stageH = this.stage.stageHeight;
-        sky.width = stageW;
-        sky.height = stageH;
-        
-        //index top banner
-        let topBanner = new IndexTopBanner();
-        let myTop = topBanner.createView(stageW, stageH, this);
-        this.myTop = myTop;
-        //index center pictures
-        let button1 = new IndexCenterButton();
-        button1.createView(stageW,stageH, this);
-
-        
-        
+        //index scene
+        const IndexView = new Index(this.stage.stageWidth, this.stage.stageHeight);
+        this.addChild(IndexView);
     }
+
     /**
      * 根据name关键字创建一个Bitmap对象。name属性请参考resources/resource.json配置文件的内容。
      * Create a Bitmap object according to name keyword.As for the property of name please refer to the configuration file of resources/resource.json.
