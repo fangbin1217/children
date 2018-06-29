@@ -10,13 +10,17 @@ r.prototype = e.prototype, t.prototype = new r();
 };
 var Index = (function (_super) {
     __extends(Index, _super);
-    function Index(stageW, stageH) {
+    function Index() {
         var _this = _super.call(this) || this;
-        _this.stageW = stageW;
-        _this.stageH = stageH;
         _this.createView();
         return _this;
     }
+    Index.Shared = function () {
+        if (Index.shared == null) {
+            Index.shared = new Index();
+        }
+        return Index.shared;
+    };
     Index.prototype.partAdded = function (partName, instance) {
         _super.prototype.partAdded.call(this, partName, instance);
     };
@@ -26,13 +30,17 @@ var Index = (function (_super) {
     Index.prototype.createView = function () {
         //set background image
         var sky = this.createBitmapByName("bgIndex_jpg");
-        sky.width = this.stageW;
-        sky.height = this.stageH;
+        sky.width = egret.MainContext.instance.stage.stageWidth;
+        sky.height = egret.MainContext.instance.stage.stageHeight;
         this.addChild(sky);
         //index top banner
-        this.addChild(IndexTopBanner.Shared());
+        var a = IndexTopBanner.Shared();
+        a.createView();
+        this.addChild(a);
         //index center pictures
-        this.addChild(IndexCenterButton.Shared());
+        var b = IndexCenterButton.Shared();
+        b.createView();
+        this.addChild(b);
     };
     /**
      * 根据name关键字创建一个Bitmap对象。name属性请参考resources/resource.json配置文件的内容。

@@ -14,7 +14,6 @@ var IndexCenterButton = (function (_super) {
         var _this = _super.call(this) || this;
         _this.stageW = egret.MainContext.instance.stage.stageWidth;
         _this.stageH = egret.MainContext.instance.stage.stageHeight;
-        _this.createView();
         return _this;
     }
     IndexCenterButton.Shared = function () {
@@ -31,53 +30,52 @@ var IndexCenterButton = (function (_super) {
     };
     IndexCenterButton.prototype.createView = function () {
         /****************SET ROOM***********************/
-        var button = this.createBitmapByName('pictures_json.button_index1');
-        button.touchEnabled = true; //设置可以进行触摸
-        button.addEventListener(egret.TouchEvent.TOUCH_BEGIN, this.onTouchBeginSetRoom, this);
-        button.addEventListener(egret.TouchEvent.TOUCH_END, this.onTouchEndSetRoom, this);
-        button.alpha = 0.9;
-        button.x = -this.stageW * 2.8 / 10;
-        button.y = this.stageH * 2.3 / 10 - this.stageH * 5.4 / 20;
-        button.width = this.stageW * 2.8 / 10;
-        button.height = this.stageH * 5.4 / 10;
-        button.anchorOffsetX = -this.stageW * 2.8 / 20;
-        button.anchorOffsetY = -this.stageH * 5.4 / 20;
-        this.addChild(button);
-        var tw = egret.Tween.get(button);
+        this.button = this.createBitmapByName('icons_json.setRoom');
+        this.button.touchEnabled = true; //设置可以进行触摸
+        this.button.addEventListener(egret.TouchEvent.TOUCH_BEGIN, this.onTouchBeginSetRoom, this);
+        this.button.addEventListener(egret.TouchEvent.TOUCH_END, this.onTouchEndSetRoom, this);
+        this.button.alpha = 0.9;
+        this.button.x = -this.stageW * 2.8 / 10;
+        this.button.y = this.stageH * 2.3 / 10 - this.stageH * 5.4 / 20;
+        this.button.width = this.stageW * 2.8 / 10;
+        this.button.height = this.stageH * 5.4 / 10;
+        this.button.anchorOffsetX = -this.stageW * 2.8 / 20;
+        this.button.anchorOffsetY = -this.stageH * 5.4 / 20;
+        this.addChild(this.button);
+        var tw = egret.Tween.get(this.button);
         tw.to({ x: this.stageW * 2 / 10 - this.stageW * 2.8 / 20, y: this.stageH * 2.3 / 10 - this.stageH * 5.4 / 20 }, 700, egret.Ease.sineOut);
         /****************SET ROOM***********************/
         /****************ENTER ROOM***********************/
-        var button2 = this.createBitmapByName('pictures2_json.enterRoom');
-        button2.touchEnabled = true; //设置可以进行触摸
-        button2.once(egret.TouchEvent.TOUCH_BEGIN, this.onTouchBeginEnterRoom, this);
-        button2.once(egret.TouchEvent.TOUCH_END, this.onTouchEndEnterRoom, this);
-        button2.alpha = 0.9;
-        button2.x = this.stageW;
-        button2.y = this.stageH * 2.3 / 10 - this.stageH * 2.5 / 20;
-        button2.width = this.stageW * 2.8 / 10;
-        button2.height = this.stageH * 2.5 / 10;
-        button2.anchorOffsetX = -this.stageW * 2.8 / 20;
+        this.button2 = this.createBitmapByName('icons_json.enterRoom');
+        this.button2.touchEnabled = true; //设置可以进行触摸
+        this.button2.addEventListener(egret.TouchEvent.TOUCH_BEGIN, this.onTouchBeginEnterRoom, this);
+        this.button2.addEventListener(egret.TouchEvent.TOUCH_END, this.onTouchEndEnterRoom, this);
+        this.button2.alpha = 0.9;
+        this.button2.x = this.stageW;
+        this.button2.y = this.stageH * 2.3 / 10 - this.stageH * 2.5 / 20;
+        this.button2.width = this.stageW * 2.8 / 10;
+        this.button2.height = this.stageH * 2.5 / 10;
+        this.button2.anchorOffsetX = -this.stageW * 2.8 / 20;
         ;
-        button2.anchorOffsetY = -this.stageH * 2.5 / 20;
-        this.addChild(button2);
-        var tw2 = egret.Tween.get(button2);
+        this.button2.anchorOffsetY = -this.stageH * 2.5 / 20;
+        this.addChild(this.button2);
+        var tw2 = egret.Tween.get(this.button2);
         tw2.to({ x: this.stageW * 5.2 / 10 - this.stageW * 2.8 / 20, y: this.stageH * 2.3 / 10 - this.stageH * 2.5 / 20 }, 700, egret.Ease.sineOut);
         /****************ENTER ROOM***********************/
         /****************MY ROOM***********************/
-        var button3 = this.createBitmapByName('pictures2_json.myRoom');
-        button3.touchEnabled = true; //设置可以进行触摸
-        button3.addEventListener(egret.TouchEvent.TOUCH_BEGIN, this.onTouchBeginMyRoom, this);
-        button3.addEventListener(egret.TouchEvent.TOUCH_END, this.onTouchEndMyRoom, this);
-        button3.alpha = 0.9;
-        button3.x = this.stageW;
-        button3.y = this.stageH * 5.2 / 10 - this.stageH * 2.5 / 20;
-        button3.width = this.stageW * 2.8 / 10;
-        button3.height = this.stageH * 2.5 / 10;
-        button3.anchorOffsetX = -this.stageW * 2.8 / 20;
-        ;
-        button3.anchorOffsetY = -this.stageH * 2.5 / 20;
-        this.addChild(button3);
-        var tw3 = egret.Tween.get(button3);
+        this.button3 = this.createBitmapByName('icons_json.myRoom');
+        this.button3.touchEnabled = true; //设置可以进行触摸
+        this.button3.addEventListener(egret.TouchEvent.TOUCH_BEGIN, this.onTouchBeginMyRoom, this);
+        this.button3.addEventListener(egret.TouchEvent.TOUCH_END, this.onTouchEndMyRoom, this);
+        this.button3.alpha = 0.9;
+        this.button3.x = this.stageW;
+        this.button3.y = this.stageH * 5.2 / 10 - this.stageH * 2.5 / 20;
+        this.button3.width = this.stageW * 2.8 / 10;
+        this.button3.height = this.stageH * 2.5 / 10;
+        this.button3.anchorOffsetX = -this.stageW * 2.8 / 20;
+        this.button3.anchorOffsetY = -this.stageH * 2.5 / 20;
+        this.addChild(this.button3);
+        var tw3 = egret.Tween.get(this.button3);
         tw3.to({ x: this.stageW * 5.2 / 10 - this.stageW * 2.8 / 20, y: this.stageH * 5.2 / 10 - this.stageH * 2.5 / 20 }, 700, egret.Ease.sineOut);
         /****************MY ROOM***********************/
     };
@@ -129,10 +127,14 @@ var IndexCenterButton = (function (_super) {
         target.scaleX = 1;
         target.scaleY = 1;
         this.addChild(target);
-        var enterRoomSence = EnterRoom.Shared();
-        this.parent.parent.addChild(enterRoomSence);
-        this.parent.removeChild(IndexTopBanner.Shared());
-        this.parent.removeChild(this);
+        IndexTopBanner.Shared().clearView();
+        IndexCenterButton.Shared().clearSetRoom();
+        IndexCenterButton.Shared().clearEnterRoom();
+        IndexCenterButton.Shared().clearMyRoom();
+        //let enterRoomSence = EnterRoom.Shared();
+        //this.parent.parent.addChild(enterRoomSence);
+        //this.parent.parent.removeChild(Index.Shared());
+        //this.parent.removeChild(this);
     };
     /**
      * 我的房间按下回调
@@ -167,6 +169,24 @@ var IndexCenterButton = (function (_super) {
         var texture = RES.getRes(name);
         result.texture = texture;
         return result;
+    };
+    IndexCenterButton.prototype.clearSetRoom = function () {
+        var tw = egret.Tween.get(this.button);
+        tw.to({ x: -this.stageW * 2.8 / 10 - this.stageW * 2.8 / 10, y: this.stageH * 2.3 / 10 - this.stageH * 5.4 / 20 }, 700, egret.Ease.sineOut);
+    };
+    IndexCenterButton.prototype.clearEnterRoom = function () {
+        var tw = egret.Tween.get(this.button2);
+        tw.to({ x: this.stageW + this.stageW * 2.8 / 20, y: this.stageH * 2.3 / 10 - this.stageH * 2.5 / 20 }, 700, egret.Ease.sineOut);
+    };
+    IndexCenterButton.prototype.clearMyRoom = function () {
+        var tw = egret.Tween.get(this.button3);
+        tw.to({ x: this.stageW + this.stageW * 2.8 / 20, y: this.stageH * 5.2 / 10 - this.stageH * 2.5 / 20 }, 700, egret.Ease.sineOut).call(this.clearCallback);
+    };
+    IndexCenterButton.prototype.clearCallback = function () {
+        var c = EnterRoom.Shared();
+        c.createView();
+        this.parent.addChild(c);
+        this.parent.removeChild(this);
     };
     return IndexCenterButton;
 }(eui.Component));

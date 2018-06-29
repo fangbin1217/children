@@ -2,7 +2,7 @@
 	"groups": [
 		{
 			"name": "preload",
-			"keys": "description_json,pictures_json,gameEui_json,pictures2_json,bgIndex_jpg"
+			"keys": "description_json,gameEui_json,bgIndex_jpg,bgDesk_jpg,icons_json"
 		}
 	],
 	"resources": [
@@ -12,26 +12,25 @@
 			"url": "config/description.json"
 		},
 		{
-			"name": "pictures_json",
-			"type": "sheet",
-			"url": "assets/pictures.json",
-			"subkeys": "button_down,button_index1,button_up,checkbox_select_disabled,checkbox_select_down,checkbox_select_up,checkbox_unselect,selected,border,header,thumb_pb,track_pb,radiobutton_select_disabled,radiobutton_select_down,radiobutton_select_up,radiobutton_unselect,roundthumb,track_sb,thumb,track,tracklight,handle,off,on"
-		},
-		{
 			"name": "gameEui_json",
 			"type": "json",
 			"url": "gameEui.json"
 		},
 		{
-			"name": "pictures2_json",
-			"type": "sheet",
-			"url": "assets/pictures2.json",
-			"subkeys": "avatar,awardCup,bomb,clock,enterRoom,first,goBack,message,myRoom,second,setUp,share,sitDown,spring,third,victory"
-		},
-		{
 			"name": "bgIndex_jpg",
 			"type": "image",
 			"url": "assets/bgIndex.jpg"
+		},
+		{
+			"name": "bgDesk_jpg",
+			"type": "image",
+			"url": "assets/bgDesk.jpg"
+		},
+		{
+			"name": "icons_json",
+			"type": "sheet",
+			"url": "assets/icons.json",
+			"subkeys": "enterRoom,myRoom,quickEnter,setRoom,avatar,awardCup,bomb,clock,diamond,first,message,setUp,share,sitDown,spring,third,victory,border,button_down,button_up,checkbox_select_disabled,checkbox_select_down,checkbox_select_up,checkbox_unselect,goBack,handle,header,off,on,radiobutton_select_disabled,radiobutton_select_down,radiobutton_select_up,radiobutton_unselect,roundthumb,selected,thumb_pb,thumb,track_pb,track_sb,track,second"
 		}
 	]
 }

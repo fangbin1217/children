@@ -14,7 +14,6 @@ var IndexTopBanner = (function (_super) {
         var _this = _super.call(this) || this;
         _this.stageW = egret.MainContext.instance.stage.stageWidth;
         _this.stageH = egret.MainContext.instance.stage.stageHeight;
-        _this.createView();
         return _this;
     }
     IndexTopBanner.Shared = function () {
@@ -30,18 +29,25 @@ var IndexTopBanner = (function (_super) {
         _super.prototype.childrenCreated.call(this);
     };
     IndexTopBanner.prototype.createView = function () {
-        var sprcon = new egret.Sprite();
-        this.addChild(sprcon);
+        this.banner = new egret.Sprite();
+        this.addChild(this.banner);
         var topMask = new egret.Shape();
         topMask.name = "indexTopBanner";
         topMask.graphics.beginFill(0xFAFAFA, 0.1);
-        topMask.graphics.drawRect(0, 0, this.stageW, this.stageH * 1.2 / 10);
+        topMask.graphics.drawRoundRect(0, 0, this.stageW, this.stageH * 1.2 / 10, 20, 20);
         topMask.graphics.endFill();
         topMask.x = 0;
         topMask.y = -this.stageH * 1.2 / 10;
-        this.addChild(topMask);
+        this.banner.addChild(topMask);
         var tw = egret.Tween.get(topMask);
         tw.to({ x: 0, y: 0 }, 700, egret.Ease.sineOut);
+    };
+    IndexTopBanner.prototype.clearView = function () {
+        var tw = egret.Tween.get(this.banner);
+        tw.to({ x: 0, y: -egret.MainContext.instance.stage.stageHeight * 1.2 / 10 }, 700, egret.Ease.sineOut).call(this.clearCallback);
+    };
+    IndexTopBanner.prototype.clearCallback = function () {
+        this.parent.removeChild(this);
     };
     /**
      * 根据name关键字创建一个Bitmap对象。name属性请参考resources/resource.json配置文件的内容。

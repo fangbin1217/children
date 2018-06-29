@@ -104,8 +104,7 @@ class Main extends eui.UILayer {
     protected createGameScene(): void {
 
         //index scene
-        const IndexView = new Index(this.stage.stageWidth, this.stage.stageHeight);
-        this.addChild(IndexView);
+        this.addChild(Index.Shared());
     }
 
     /**

@@ -1,5 +1,6 @@
 class IndexTopBanner extends eui.Component implements  eui.UIComponent {
 
+	public banner:any;
 
 	private static shared:IndexTopBanner;
 
@@ -16,7 +17,6 @@ class IndexTopBanner extends eui.Component implements  eui.UIComponent {
 		super();
 		this.stageW = egret.MainContext.instance.stage.stageWidth;
 		this.stageH = egret.MainContext.instance.stage.stageHeight;
-		this.createView();
 	}
 
 	protected partAdded(partName:string,instance:any):void
@@ -30,21 +30,28 @@ class IndexTopBanner extends eui.Component implements  eui.UIComponent {
 		super.childrenCreated();
 	}
 	 createView(): void {
-		let sprcon:egret.Sprite = new egret.Sprite();
-		this.addChild(sprcon);
+		this.banner = new egret.Sprite();
+		this.addChild(this.banner);
 		let topMask = new egret.Shape();
 		topMask.name = "indexTopBanner";
         topMask.graphics.beginFill(0xFAFAFA, 0.1);
-        topMask.graphics.drawRect(0, 0, this.stageW, this.stageH*1.2/10);
+        topMask.graphics.drawRoundRect(0, 0, this.stageW, this.stageH*1.2/10, 20, 20);
         topMask.graphics.endFill();
         topMask.x = 0;
         topMask.y = -this.stageH*1.2/10;
-        this.addChild(topMask);
+        this.banner.addChild(topMask);
 		let tw = egret.Tween.get( topMask );
         tw.to( {x:0,y:0}, 700,egret.Ease.sineOut );
     }
 
+	clearView():void{
+		let tw = egret.Tween.get( this.banner );
+		tw.to( {x:0,y:-egret.MainContext.instance.stage.stageHeight*1.2/10}, 700,egret.Ease.sineOut ).call(this.clearCallback);
+	}
 
+	clearCallback():void{
+		this.parent.removeChild(this);
+	}
 
 	/**
      * 根据name关键字创建一个Bitmap对象。name属性请参考resources/resource.json配置文件的内容。
