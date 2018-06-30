@@ -41,6 +41,7 @@ var Index = (function (_super) {
         var b = IndexCenterButton.Shared();
         b.createView();
         this.addChild(b);
+        //index bottom banner
     };
     /**
      * 根据name关键字创建一个Bitmap对象。name属性请参考resources/resource.json配置文件的内容。
@@ -51,6 +52,9 @@ var Index = (function (_super) {
         var texture = RES.getRes(name);
         result.texture = texture;
         return result;
+    };
+    Index.prototype.getIndexThis = function () {
+        return this;
     };
     return Index;
 }(eui.Component));

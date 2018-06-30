@@ -153,12 +153,7 @@ class IndexCenterButton extends eui.Component implements  eui.UIComponent {
 		IndexCenterButton.Shared().clearSetRoom();
 		IndexCenterButton.Shared().clearEnterRoom();
 		IndexCenterButton.Shared().clearMyRoom();
-		//let enterRoomSence = EnterRoom.Shared();
-		//this.parent.parent.addChild(enterRoomSence);
-		
-		//this.parent.parent.removeChild(Index.Shared());
-		//this.parent.removeChild(this);
-		
+		this.removeAllLListener();
     }
 
 	/**
@@ -220,7 +215,23 @@ class IndexCenterButton extends eui.Component implements  eui.UIComponent {
 	clearCallback():void{
 		let c = EnterRoom.Shared();
 		c.createView();
-		this.parent.addChild(c);
-		this.parent.removeChild(this);
+		Index.Shared().getIndexThis().addChild(c);
+		//this.parent.addChild(c);
+		Index.Shared().getIndexThis().removeChild(IndexCenterButton.Shared().getIndexCenterButtonThis());
+		//this.parent.removeChild(this);
+		
+	}
+
+	getIndexCenterButtonThis():any{
+		return this;
+	}
+
+	private removeAllLListener():void{
+		this.button.removeEventListener(egret.TouchEvent.TOUCH_BEGIN, this.onTouchBeginSetRoom, this);
+		this.button.removeEventListener(egret.TouchEvent.TOUCH_END, this.onTouchEndSetRoom, this);
+		this.button2.removeEventListener(egret.TouchEvent.TOUCH_BEGIN, this.onTouchBeginEnterRoom, this);
+		this.button2.removeEventListener(egret.TouchEvent.TOUCH_END, this.onTouchEndEnterRoom, this);
+		this.button3.removeEventListener(egret.TouchEvent.TOUCH_BEGIN, this.onTouchBeginMyRoom, this);
+		this.button3.removeEventListener(egret.TouchEvent.TOUCH_END, this.onTouchEndMyRoom, this);
 	}
 }

@@ -17,6 +17,7 @@
 		"bin-debug/ThemeAdapter.js",
 		"bin-debug/components/EnterRoom.js",
 		"bin-debug/components/Index.js",
+		"bin-debug/components/IndexBottomBanner.js",
 		"bin-debug/components/IndexCenterButton.js",
 		"bin-debug/components/IndexTopBanner.js"
 	]

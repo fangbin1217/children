@@ -131,10 +131,7 @@ var IndexCenterButton = (function (_super) {
         IndexCenterButton.Shared().clearSetRoom();
         IndexCenterButton.Shared().clearEnterRoom();
         IndexCenterButton.Shared().clearMyRoom();
-        //let enterRoomSence = EnterRoom.Shared();
-        //this.parent.parent.addChild(enterRoomSence);
-        //this.parent.parent.removeChild(Index.Shared());
-        //this.parent.removeChild(this);
+        this.removeAllLListener();
     };
     /**
      * 我的房间按下回调
@@ -185,8 +182,21 @@ var IndexCenterButton = (function (_super) {
     IndexCenterButton.prototype.clearCallback = function () {
         var c = EnterRoom.Shared();
         c.createView();
-        this.parent.addChild(c);
-        this.parent.removeChild(this);
+        Index.Shared().getIndexThis().addChild(c);
+        //this.parent.addChild(c);
+        Index.Shared().getIndexThis().removeChild(IndexCenterButton.Shared().getIndexCenterButtonThis());
+        //this.parent.removeChild(this);
+    };
+    IndexCenterButton.prototype.getIndexCenterButtonThis = function () {
+        return this;
+    };
+    IndexCenterButton.prototype.removeAllLListener = function () {
+        this.button.removeEventListener(egret.TouchEvent.TOUCH_BEGIN, this.onTouchBeginSetRoom, this);
+        this.button.removeEventListener(egret.TouchEvent.TOUCH_END, this.onTouchEndSetRoom, this);
+        this.button2.removeEventListener(egret.TouchEvent.TOUCH_BEGIN, this.onTouchBeginEnterRoom, this);
+        this.button2.removeEventListener(egret.TouchEvent.TOUCH_END, this.onTouchEndEnterRoom, this);
+        this.button3.removeEventListener(egret.TouchEvent.TOUCH_BEGIN, this.onTouchBeginMyRoom, this);
+        this.button3.removeEventListener(egret.TouchEvent.TOUCH_END, this.onTouchEndMyRoom, this);
     };
     return IndexCenterButton;
 }(eui.Component));

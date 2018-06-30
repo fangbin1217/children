@@ -40,6 +40,9 @@ class Index extends eui.Component implements  eui.UIComponent {
 		let b = IndexCenterButton.Shared();
 		b.createView();
         this.addChild(b);
+
+		//index bottom banner
+		
     }
 
 
@@ -54,4 +57,8 @@ class Index extends eui.Component implements  eui.UIComponent {
         result.texture = texture;
         return result;
     }
+
+	public getIndexThis():any{
+		return this;
+	}
 }
