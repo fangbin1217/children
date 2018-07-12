@@ -43,7 +43,7 @@ class EnterRoom extends eui.Component implements  eui.UIComponent {
         topMask.y = -egret.MainContext.instance.stage.stageHeight*1.2/10;
         this.sprcon.addChild(topMask);
 		//back to index 
-		this.goBack = this.createBitmapByName('icons_json.goBack');	        
+		this.goBack = this.createBitmapByName('icons4_json.backward');	        
         this.goBack.touchEnabled = true; //设置可以进行触摸
 		this.goBack.addEventListener(egret.TouchEvent.TOUCH_BEGIN, this.onTouchBackIndex, this);
 		this.goBack.alpha = 0.8;

@@ -38,20 +38,59 @@ class LoadingUI extends egret.Sprite implements RES.PromiseTaskReporter {
 
     private textField: egret.TextField;
 
+    private curNum:number;
+
+    private totalNum:number;
+
     private createView(): void {
-        
+        /* 
         this.textField = new egret.TextField();
         this.addChild(this.textField);
-        this.textField.x = 200;
-        this.textField.y = 160;
+        this.textField.x = 228;
+        this.textField.y = 0;
         this.textField.width = 250;
         this.textField.height = 50;
-        this.textField.size = 36;
+        this.textField.size = 30;
         this.textField.textAlign = "center";
+        */
+
+        this.pBar = new eui.ProgressBar();
+        this.pBar.maximum = 200;//设置进度条的最大值
+        this.pBar.minimum = 1;//设置进度条的最小值
+        this.pBar.width = 200;
+        this.pBar.height = 30;
+
+        this.pBar.x = 228;
+        this.pBar.y = 170;
+        this.addChild(this.pBar);
+        this.pBar.value = 0;//设置进度条的初始值
+        //用timer来模拟加载进度
+        let timer:egret.Timer = new egret.Timer(50,0);
+        timer.addEventListener(egret.TimerEvent.TIMER,this.timerHandler,this);
+        timer.start();
+
+    }
+
+    private timerHandler():void{
+        //console.log(this.curNum,this.totalNum)
+        //this.pBar.value += 1;
+        //if(this.pBar.value>=100){this.pBar.value=0;}
+        
+        let percent = Math.round(200*this.curNum/this.totalNum);
+        this.pBar.value = percent;
+        //console.log(this.pBar.value)
+        if(this.pBar.value>=200){this.pBar.value=200;}
+        
     }
 
     public onProgress(current: number, total: number): void {
-        let percent = Math.round(100*current/total);
-        this.textField.text = `已加载...${percent}%`;
+
+        this.curNum = current;
+        this.totalNum = total;
+        
+        //let percent = Math.round(100*current/total);
+        //this.textField.text = `已加载...${percent}%`;
+        
+
     }
 }

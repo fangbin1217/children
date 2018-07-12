@@ -102,9 +102,15 @@ class Main extends eui.UILayer {
      * Create scene interface
      */
     protected createGameScene(): void {
+        
+        let index = Index.Shared();
+        index.createView();
 
         //index scene
-        this.addChild(Index.Shared());
+        this.addChild(index);
+        
+
+        
     }
 
     /**

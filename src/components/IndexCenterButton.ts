@@ -61,7 +61,7 @@ class IndexCenterButton extends eui.Component implements  eui.UIComponent {
 		this.button2.y = this.stageH * 2.3/10 - this.stageH * 2.5/20;
         this.button2.width = this.stageW * 2.8/10;
         this.button2.height = this.stageH * 2.5/10;
-		this.button2.anchorOffsetX = -this.stageW * 2.8/20;;
+		this.button2.anchorOffsetX = -this.stageW * 2.8/20;
 		this.button2.anchorOffsetY = -this.stageH * 2.5/20;
         this.addChild(this.button2);
 
@@ -117,6 +117,14 @@ class IndexCenterButton extends eui.Component implements  eui.UIComponent {
 		target.scaleX = 1;
         target.scaleY = 1;
         this.addChild(target);
+
+		let mySprite = MySprite.Shared();
+		mySprite.createView();
+		Index.Shared().getIndexThis().addChild(mySprite);
+
+		let dialog = DialogSetRoom.Shared();
+		dialog.createView();
+		Index.Shared().getIndexThis().addChild(dialog);
     }
 
 	/**
@@ -184,6 +192,7 @@ class IndexCenterButton extends eui.Component implements  eui.UIComponent {
 		target.scaleX = 1;
         target.scaleY = 1;
         this.addChild(target);
+
     }
 
 	/**

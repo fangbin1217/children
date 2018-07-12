@@ -166,8 +166,10 @@ var Main = (function (_super) {
      * Create scene interface
      */
     Main.prototype.createGameScene = function () {
+        var index = Index.Shared();
+        index.createView();
         //index scene
-        this.addChild(Index.Shared());
+        this.addChild(index);
     };
     /**
      * 根据name关键字创建一个Bitmap对象。name属性请参考resources/resource.json配置文件的内容。

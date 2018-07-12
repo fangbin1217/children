@@ -9,9 +9,9 @@ class Index extends eui.Component implements  eui.UIComponent {
         return Index.shared;
     }
 
+	public sky:any;
 	public constructor() {
 		super();
-		this.createView();
 	}
 
 	protected partAdded(partName:string,instance:any):void
@@ -19,18 +19,19 @@ class Index extends eui.Component implements  eui.UIComponent {
 		super.partAdded(partName,instance);
 	}
 
-
 	protected childrenCreated():void
 	{
 		super.childrenCreated();
 	}
 	 createView(): void {
+		 
 		//set background image
-        let sky = this.createBitmapByName("bgIndex_jpg");
-		sky.width = egret.MainContext.instance.stage.stageWidth;
-        sky.height = egret.MainContext.instance.stage.stageHeight;
-        this.addChild(sky);
+        this.sky = this.createBitmapByName("bgIndex_jpg");
+		this.sky.width = egret.MainContext.instance.stage.stageWidth;
+        this.sky.height = egret.MainContext.instance.stage.stageHeight;
+        this.addChild(this.sky);
 
+		
 		//index top banner
 		let a = IndexTopBanner.Shared();
 		a.createView();
@@ -42,9 +43,23 @@ class Index extends eui.Component implements  eui.UIComponent {
         this.addChild(b);
 
 		//index bottom banner
+		let c = IndexBottomBanner.Shared();
+		c.createView();
+		this.addChild(c);
+		
+		
+	
+
+		/*
+		let mySprite = MySprite.Shared();
+		
+		mySprite.createView();
+		
+		this.addChild(mySprite);
+		*/
+		
 		
     }
-
 
 
 	/**

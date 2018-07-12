@@ -2,6 +2,9 @@ class IndexBottomBanner extends eui.Component implements  eui.UIComponent {
 
 	public banner:any;
 
+	public bt1:any;
+	public bt12:any;
+
 	private static shared:IndexBottomBanner;
 
 	public static Shared() {
@@ -30,17 +33,46 @@ class IndexBottomBanner extends eui.Component implements  eui.UIComponent {
 		super.childrenCreated();
 	}
 	 createView(): void {
+		this.drawBg();
+		this.btRewad();
+		
+    }
+
+	private drawBg():void{
 		this.banner = new egret.Shape();
 		this.banner.name = "indexBottomBanner";
-        this.banner.graphics.beginFill(0xFAFAFA, 0.1);
-        this.banner.graphics.drawRoundRect(0, 0, this.stageW, this.stageH*1.2/10, 20, 20);
+		let matrix:egret.Matrix = new egret.Matrix();
+		matrix.createGradientBox(this.stageW*3/4, this.stageH*1.2/10);
+
+        //this.banner.graphics.beginFill(0xFAFAFA, 0.1);
+		this.banner.graphics.beginGradientFill(egret.GradientType.LINEAR, [0xF1F1F1, 0xF1F1F1], [0, 0.2], [0, 255], matrix);
+        this.banner.graphics.drawRoundRect(0, 0, this.stageW*3/4, this.stageH*1.2/10, 10, 10);
         this.banner.graphics.endFill();
-        this.banner.x = 0;
-        this.banner.y = -this.stageH*1.2/10;
+        this.banner.x = this.stageW*1/4;
+        this.banner.y = this.stageH;
+		
         this.addChild(this.banner);
+
+
 		let tw = egret.Tween.get( this.banner );
-        tw.to( {x:0,y:0}, 700,egret.Ease.sineOut );
-    }
+        tw.to( {x:this.stageW*1/4,y:this.stageH*8.8/10}, 700,egret.Ease.sineOut );
+	}
+
+	private btRewad():void{
+		//reward
+		this.bt1 = this.createBitmapByName('icons_json.awardCup');	        
+		this.bt1.touchEnabled = true; //设置可以进行触摸
+		this.bt1.x = this.stageW /5;
+		this.bt1.y = this.stageH;
+		this.bt1.witdh = this.stageH * 1.2*0.8/10;
+        this.bt1.height = this.stageH * 1.2*0.8/10;
+		this.bt1.alpha = 0.8;
+		this.bt1.anchorOffsetX = -this.stageH * 1.2*0.8/20;
+		this.bt1.anchorOffsetY = -this.stageH * 1.2*0.8/20;
+		this.addChild(this.bt1);
+		let tw = egret.Tween.get( this.banner );
+        tw.to( {x:this.stageW /5-this.bt1.width/2,y:this.stageH*8.8/10 - this.stageH * 1.2*0.8*0.3/10-this.stageH * 1.2*0.8/20}, 700,egret.Ease.sineOut );
+	}
 
 	clearView():void{
 		let tw = egret.Tween.get( this.banner );
@@ -48,8 +80,7 @@ class IndexBottomBanner extends eui.Component implements  eui.UIComponent {
 	}
 
 	clearCallback():void{
-		Index.Shared().getIndexThis().removeChild(IndexTopBanner.Shared().getIndexTopBannerThis());
-		//this.parent.removeChild(this);
+		Index.Shared().getIndexThis().removeChild(IndexBottomBanner.Shared().getIndexBottomBannerThis());
 	}
 
 	getIndexBottomBannerThis():any{

@@ -37,7 +37,7 @@ class IndexTopBanner extends eui.Component implements  eui.UIComponent {
 
         //this.banner.graphics.beginFill(0xFAFAFA, 0.1);
 		this.banner.graphics.beginGradientFill(egret.GradientType.LINEAR, [0xF1F1F1, 0xF1F1F1], [0.2, 0], [0, 255], matrix);
-        this.banner.graphics.drawRoundRect(0, 0, this.stageW*3/4, this.stageH*1.2/10, 20, 20);
+        this.banner.graphics.drawRoundRect(0, 0, this.stageW*3/4, this.stageH*1.2/10, 10, 10);
         this.banner.graphics.endFill();
         this.banner.x = 0;
         this.banner.y = -this.stageH*1.2/10;

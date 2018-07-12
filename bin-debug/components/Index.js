@@ -11,9 +11,7 @@ r.prototype = e.prototype, t.prototype = new r();
 var Index = (function (_super) {
     __extends(Index, _super);
     function Index() {
-        var _this = _super.call(this) || this;
-        _this.createView();
-        return _this;
+        return _super.call(this) || this;
     }
     Index.Shared = function () {
         if (Index.shared == null) {
@@ -29,10 +27,10 @@ var Index = (function (_super) {
     };
     Index.prototype.createView = function () {
         //set background image
-        var sky = this.createBitmapByName("bgIndex_jpg");
-        sky.width = egret.MainContext.instance.stage.stageWidth;
-        sky.height = egret.MainContext.instance.stage.stageHeight;
-        this.addChild(sky);
+        this.sky = this.createBitmapByName("bgIndex_jpg");
+        this.sky.width = egret.MainContext.instance.stage.stageWidth;
+        this.sky.height = egret.MainContext.instance.stage.stageHeight;
+        this.addChild(this.sky);
         //index top banner
         var a = IndexTopBanner.Shared();
         a.createView();
@@ -42,6 +40,16 @@ var Index = (function (_super) {
         b.createView();
         this.addChild(b);
         //index bottom banner
+        var c = IndexBottomBanner.Shared();
+        c.createView();
+        this.addChild(c);
+        /*
+        let mySprite = MySprite.Shared();
+        
+        mySprite.createView();
+        
+        this.addChild(mySprite);
+        */
     };
     /**
      * 根据name关键字创建一个Bitmap对象。name属性请参考resources/resource.json配置文件的内容。

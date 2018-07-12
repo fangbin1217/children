@@ -29,24 +29,45 @@ var IndexBottomBanner = (function (_super) {
         _super.prototype.childrenCreated.call(this);
     };
     IndexBottomBanner.prototype.createView = function () {
+        this.drawBg();
+        this.btRewad();
+    };
+    IndexBottomBanner.prototype.drawBg = function () {
         this.banner = new egret.Shape();
         this.banner.name = "indexBottomBanner";
-        this.banner.graphics.beginFill(0xFAFAFA, 0.1);
-        this.banner.graphics.drawRoundRect(0, 0, this.stageW, this.stageH * 1.2 / 10, 20, 20);
+        var matrix = new egret.Matrix();
+        matrix.createGradientBox(this.stageW * 3 / 4, this.stageH * 1.2 / 10);
+        //this.banner.graphics.beginFill(0xFAFAFA, 0.1);
+        this.banner.graphics.beginGradientFill(egret.GradientType.LINEAR, [0xF1F1F1, 0xF1F1F1], [0, 0.2], [0, 255], matrix);
+        this.banner.graphics.drawRoundRect(0, 0, this.stageW * 3 / 4, this.stageH * 1.2 / 10, 10, 10);
         this.banner.graphics.endFill();
-        this.banner.x = 0;
-        this.banner.y = -this.stageH * 1.2 / 10;
+        this.banner.x = this.stageW * 1 / 4;
+        this.banner.y = this.stageH;
         this.addChild(this.banner);
         var tw = egret.Tween.get(this.banner);
-        tw.to({ x: 0, y: 0 }, 700, egret.Ease.sineOut);
+        tw.to({ x: this.stageW * 1 / 4, y: this.stageH * 8.8 / 10 }, 700, egret.Ease.sineOut);
+    };
+    IndexBottomBanner.prototype.btRewad = function () {
+        //reward
+        this.bt1 = this.createBitmapByName('icons_json.awardCup');
+        this.bt1.touchEnabled = true; //设置可以进行触摸
+        this.bt1.x = this.stageW / 5;
+        this.bt1.y = this.stageH;
+        this.bt1.witdh = this.stageH * 1.2 * 0.8 / 10;
+        this.bt1.height = this.stageH * 1.2 * 0.8 / 10;
+        this.bt1.alpha = 0.8;
+        this.bt1.anchorOffsetX = -this.stageH * 1.2 * 0.8 / 20;
+        this.bt1.anchorOffsetY = -this.stageH * 1.2 * 0.8 / 20;
+        this.addChild(this.bt1);
+        var tw = egret.Tween.get(this.banner);
+        tw.to({ x: this.stageW / 5 - this.bt1.width / 2, y: this.stageH * 8.8 / 10 - this.stageH * 1.2 * 0.8 * 0.3 / 10 - this.stageH * 1.2 * 0.8 / 20 }, 700, egret.Ease.sineOut);
     };
     IndexBottomBanner.prototype.clearView = function () {
         var tw = egret.Tween.get(this.banner);
         tw.to({ x: 0, y: -egret.MainContext.instance.stage.stageHeight * 1.2 / 10 }, 700, egret.Ease.sineOut).call(this.clearCallback);
     };
     IndexBottomBanner.prototype.clearCallback = function () {
-        Index.Shared().getIndexThis().removeChild(IndexTopBanner.Shared().getIndexTopBannerThis());
-        //this.parent.removeChild(this);
+        Index.Shared().getIndexThis().removeChild(IndexBottomBanner.Shared().getIndexBottomBannerThis());
     };
     IndexBottomBanner.prototype.getIndexBottomBannerThis = function () {
         return this;

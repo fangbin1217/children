@@ -56,7 +56,6 @@ var IndexCenterButton = (function (_super) {
         this.button2.width = this.stageW * 2.8 / 10;
         this.button2.height = this.stageH * 2.5 / 10;
         this.button2.anchorOffsetX = -this.stageW * 2.8 / 20;
-        ;
         this.button2.anchorOffsetY = -this.stageH * 2.5 / 20;
         this.addChild(this.button2);
         var tw2 = egret.Tween.get(this.button2);
@@ -102,6 +101,12 @@ var IndexCenterButton = (function (_super) {
         target.scaleX = 1;
         target.scaleY = 1;
         this.addChild(target);
+        var mySprite = MySprite.Shared();
+        mySprite.createView();
+        Index.Shared().getIndexThis().addChild(mySprite);
+        var dialog = DialogSetRoom.Shared();
+        dialog.createView();
+        Index.Shared().getIndexThis().addChild(dialog);
     };
     /**
      * 进入房间按下回调

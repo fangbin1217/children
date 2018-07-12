@@ -10,15 +10,18 @@
 		"libs/modules/promise/promise.js"
 	],
 	"game": [
-		"bin-debug/AssetAdapter.js",
 		"bin-debug/LoadingUI.js",
+		"bin-debug/components/EnterRoom.js",
 		"bin-debug/Main.js",
 		"bin-debug/Platform.js",
 		"bin-debug/ThemeAdapter.js",
-		"bin-debug/components/EnterRoom.js",
+		"bin-debug/components/DialogSetRoom.js",
+		"bin-debug/AssetAdapter.js",
 		"bin-debug/components/Index.js",
 		"bin-debug/components/IndexBottomBanner.js",
 		"bin-debug/components/IndexCenterButton.js",
-		"bin-debug/components/IndexTopBanner.js"
+		"bin-debug/components/IndexTopBanner.js",
+		"bin-debug/components/MySprite.js",
+		"bin-debug/components/WxLoginButton.js"
 	]
 }
