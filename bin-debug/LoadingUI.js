@@ -44,29 +44,30 @@ var LoadingUI = (function (_super) {
         return _this;
     }
     LoadingUI.prototype.createView = function () {
-        /*
         this.textField = new egret.TextField();
         this.addChild(this.textField);
-        this.textField.x = 228;
-        this.textField.y = 0;
+        this.textField.x = 333;
+        this.textField.y = 187;
         this.textField.width = 250;
-        this.textField.height = 50;
+        this.textField.height = 30;
         this.textField.size = 30;
-        this.textField.textAlign = "center";
-        */
+        //this.textField.textAlign = "center";
+        /*
         this.pBar = new eui.ProgressBar();
-        this.pBar.maximum = 200; //设置进度条的最大值
-        this.pBar.minimum = 1; //设置进度条的最小值
+        this.pBar.maximum = 200;//设置进度条的最大值
+        this.pBar.minimum = 1;//设置进度条的最小值
         this.pBar.width = 200;
         this.pBar.height = 30;
+
         this.pBar.x = 228;
         this.pBar.y = 170;
         this.addChild(this.pBar);
-        this.pBar.value = 0; //设置进度条的初始值
+        this.pBar.value = 0;//设置进度条的初始值
         //用timer来模拟加载进度
-        var timer = new egret.Timer(50, 0);
-        timer.addEventListener(egret.TimerEvent.TIMER, this.timerHandler, this);
+        let timer:egret.Timer = new egret.Timer(50,0);
+        timer.addEventListener(egret.TimerEvent.TIMER,this.timerHandler,this);
         timer.start();
+        */
     };
     LoadingUI.prototype.timerHandler = function () {
         //console.log(this.curNum,this.totalNum)
@@ -74,16 +75,15 @@ var LoadingUI = (function (_super) {
         //if(this.pBar.value>=100){this.pBar.value=0;}
         var percent = Math.round(200 * this.curNum / this.totalNum);
         this.pBar.value = percent;
-        //console.log(this.pBar.value)
         if (this.pBar.value >= 200) {
-            this.pBar.value = 200;
+            this.pBar.value = 0;
         }
     };
     LoadingUI.prototype.onProgress = function (current, total) {
         this.curNum = current;
         this.totalNum = total;
-        //let percent = Math.round(100*current/total);
-        //this.textField.text = `已加载...${percent}%`;
+        var percent = Math.round(100 * current / total);
+        this.textField.text = "\u5DF2\u52A0\u8F7D..." + percent + "%";
     };
     return LoadingUI;
 }(egret.Sprite));

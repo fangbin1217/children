@@ -5,10 +5,10 @@
             <e:HorizontalLayout verticalAlign="middle"/>
         </e:layout>
         <e:Image fillMode="scale" alpha="1" alpha.disabled="0.5" alpha.down="0.7"
-                 source="icons4_json.radioUncheck"
-                 source.upAndSelected="icons4_json.radioChecked"
-                 source.downAndSelected="icons4_json.radioChecked"
-                 source.disabledAndSelected="icons4_json.radioUncheck"/>
+                 source="icons7_json.radiobutton_unselect"
+                 source.upAndSelected="icons7_json.radiobutton_select_up"
+                 source.downAndSelected="icons7_json.radiobutton_select_down"
+                 source.disabledAndSelected="icons7_json.radiobutton_select_disabled"/>
         <e:Label id="labelDisplay" size="20" textColor="0x707070"
                  textAlign="center" verticalAlign="middle"
                  fontFamily="Tahoma"/>

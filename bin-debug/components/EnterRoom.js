@@ -26,9 +26,12 @@ var EnterRoom = (function (_super) {
         _super.prototype.childrenCreated.call(this);
     };
     EnterRoom.prototype.createView = function () {
-        //banner 2
+        //sprcon
         this.sprcon = new egret.Sprite();
+        this.sprcon.x = 0;
+        this.sprcon.y = -egret.MainContext.instance.stage.stageHeight * 1.2 / 10;
         this.addChild(this.sprcon);
+        //banner bg
         var topMask = new egret.Shape();
         topMask.name = "indexTopBanner2";
         var matrix = new egret.Matrix();
@@ -36,26 +39,54 @@ var EnterRoom = (function (_super) {
         topMask.graphics.beginGradientFill(egret.GradientType.LINEAR, [0xF1F1F1, 0xF1F1F1], [0.2, 0], [0, 255], matrix);
         topMask.graphics.drawRoundRect(0, 0, egret.MainContext.instance.stage.stageWidth * 3 / 4, egret.MainContext.instance.stage.stageHeight * 1.2 / 10, 20, 20);
         topMask.graphics.endFill();
-        topMask.x = 0;
-        topMask.y = -egret.MainContext.instance.stage.stageHeight * 1.2 / 10;
         this.sprcon.addChild(topMask);
-        //back to index 
-        this.goBack = this.createBitmapByName('icons4_json.backward');
+        //back button 
+        this.goBack = this.createBitmapByName('icons7_json.backward');
         this.goBack.touchEnabled = true; //设置可以进行触摸
-        this.goBack.addEventListener(egret.TouchEvent.TOUCH_BEGIN, this.onTouchBackIndex, this);
-        this.goBack.alpha = 0.8;
-        this.goBack.x = 10;
-        this.goBack.y = -egret.MainContext.instance.stage.stageHeight * 1.2 / 10;
-        //goBack.width = this.stageW * 2.8/10;
-        //goBack.height = this.stageH * 2.5/10;
+        this.goBack.addEventListener(egret.TouchEvent.TOUCH_BEGIN, this.onTouchSmall, this);
+        this.goBack.addEventListener(egret.TouchEvent.TOUCH_END, this.onTouchBackIndex, this);
+        this.goBack.width = egret.MainContext.instance.stage.stageHeight * 1.2 / 10;
+        this.goBack.height = egret.MainContext.instance.stage.stageHeight * 1.2 / 10;
         this.sprcon.addChild(this.goBack);
-        var tw = egret.Tween.get(topMask);
-        tw.to({ x: 0, y: 0 }, 700, egret.Ease.sineOut);
-        var tw2 = egret.Tween.get(this.goBack);
-        tw2.to({ x: 0, y: 0 }, 700, egret.Ease.sineOut);
+        //banner effect
+        var tw = egret.Tween.get(this.sprcon);
+        tw.to({ x: 0, y: 0 }, 700, egret.Ease.sineOut).call(this.goBackCall);
     };
-    EnterRoom.prototype.onTouchBackIndex = function () {
-        this.goBack.removeEventListener(egret.TouchEvent.TOUCH_BEGIN, this.onTouchBackIndex, this);
+    EnterRoom.prototype.goBackCall = function () {
+        EnterRoom.Shared().getEnterRoomThis().smallBig = new SmallBig(0, 0, egret.MainContext.instance.stage.stageHeight * 1.2 / 10, egret.MainContext.instance.stage.stageHeight * 1.2 / 10);
+        EnterRoom.Shared().getEnterRoomThis().smallBig.setPosition(EnterRoom.Shared().getEnterRoomThis().goBack);
+        /*
+        EnterRoom.Shared().getEnterRoomThis().goBack.x = -egret.MainContext.instance.stage.stageHeight*1.2/20;
+        EnterRoom.Shared().getEnterRoomThis().goBack.y = -egret.MainContext.instance.stage.stageHeight*1.2/20;
+        EnterRoom.Shared().getEnterRoomThis().goBack.anchorOffsetX = -egret.MainContext.instance.stage.stageHeight*1.2/20;
+        EnterRoom.Shared().getEnterRoomThis().goBack.anchorOffsetY = -egret.MainContext.instance.stage.stageHeight*1.2/20;
+        */
+    };
+    EnterRoom.prototype.onTouchSmall = function (e) {
+        EnterRoom.Shared().getEnterRoomThis().goBack.removeEventListener(egret.TouchEvent.TOUCH_BEGIN, this.onTouchSmall, this);
+        var target = e.$currentTarget;
+        var smallBig = new SmallBig(0, 0, egret.MainContext.instance.stage.stageHeight * 1.2 / 10, egret.MainContext.instance.stage.stageHeight * 1.2 / 10);
+        var target2 = smallBig.toSmaller(target, 0.8);
+        /*
+        target.scaleX = 0.8;
+        target.scaleY = 0.8;
+        target.x = -egret.MainContext.instance.stage.stageHeight*1.2/20+egret.MainContext.instance.stage.stageHeight*1.2*0.2/10;
+        target.y = -egret.MainContext.instance.stage.stageHeight*1.2/20+egret.MainContext.instance.stage.stageHeight*1.2*0.2/10;
+        */
+        EnterRoom.Shared().getEnterRoomThis().sprcon.addChild(target2);
+    };
+    EnterRoom.prototype.onTouchBackIndex = function (e) {
+        EnterRoom.Shared().getEnterRoomThis().goBack.removeEventListener(egret.TouchEvent.TOUCH_END, this.onTouchBackIndex, this);
+        var target = e.$currentTarget;
+        var smallBig = new SmallBig(0, 0, egret.MainContext.instance.stage.stageHeight * 1.2 / 10, egret.MainContext.instance.stage.stageHeight * 1.2 / 10);
+        var target2 = smallBig.toRecover(target);
+        /*
+        target.scaleX = 1;
+        target.scaleY = 1;
+        target.x = -egret.MainContext.instance.stage.stageHeight*1.2/20;
+        target.y = -egret.MainContext.instance.stage.stageHeight*1.2/20;
+        */
+        EnterRoom.Shared().getEnterRoomThis().sprcon.addChild(target2);
         //index
         var a = IndexTopBanner.Shared();
         a.createView();
