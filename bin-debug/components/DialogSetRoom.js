@@ -135,7 +135,7 @@ var DialogSetRoom = (function (_super) {
                 radio1.value = "1";
                 radio1.selected = true;
                 radio1.x = 72 + startX + 80;
-                radio1.y = bigFontSpace;
+                radio1.y = radioSpace;
                 radio1.addEventListener(egret.Event.CHANGE, this.onChangeBaseScore, this);
                 this.sprconB.addChild(radio1);
                 var radio2 = new eui.RadioButton();
@@ -375,7 +375,51 @@ var DialogSetRoom = (function (_super) {
         var smallBig = new SmallBig(x, y, 144, 66);
         var target2 = smallBig.toRecover(target);
         this.sprconB.addChild(target2);
+        //请求服务器
+        var params = "p1=postP1&p2=post2";
+        var request = new egret.HttpRequest();
+        var config = Config.Shared();
+        var url = Config.apiUrl;
+        request.responseType = egret.HttpResponseType.TEXT;
+        request.open(url, egret.HttpMethod.POST);
+        request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded;charset=UTF-8");
+        request.send(params);
+        request.once(egret.Event.COMPLETE, this.onPostComplete, this);
+        request.once(egret.IOErrorEvent.IO_ERROR, this.onPostIOError, this);
+        //request.once(egret.ProgressEvent.PROGRESS,this.onPostProgress,this);
+        //const loadingView = new LoadingUI();
+        //Index.Shared().getIndexThis().addChild(loadingView);
+        var label = new egret.TextField();
+        label.text = "正在加载.."; //设置文本内容
+        label.x = egret.MainContext.instance.stage.stageWidth / 2;
+        label.y = egret.MainContext.instance.stage.stageHeight / 2;
+        Index.Shared().getIndexThis().addChild(label);
+        //调用蒙层
+        var m2 = MySprite2.Shared();
+        m2.createView();
+        Index.Shared().getIndexThis().addChild(m2);
     };
+    DialogSetRoom.prototype.onPostComplete = function (event) {
+        var request = event.currentTarget;
+        console.log("post data : ", request.response);
+        //Index.Shared().getIndexThis().removeChildren();
+        DialogSetRoom.Shared().removeChildren();
+        IndexTopBanner.Shared().removeChildren();
+        IndexCenterButton.Shared().removeChildren();
+        IndexBottomBanner.Shared().removeChildren();
+        MySprite.Shared().removeChildren();
+        MySprite2.Shared().removeChildren();
+        Index.Shared().getIndexThis().removeChildren();
+        var gr = GameRoom.Shared();
+        gr.createView();
+        Index.Shared().getIndexThis().addChild(gr);
+    };
+    DialogSetRoom.prototype.onPostIOError = function (event) {
+        console.log("post error : " + event);
+    };
+    //private onPostProgress(event:egret.ProgressEvent):void{
+    //  console.log("post progress : " + Math.floor(100*event.bytesLoaded/event.bytesTotal));
+    //}
     /**
      * 根据name关键字创建一个Bitmap对象。name属性请参考resources/resource.json配置文件的内容。
      * Create a Bitmap object according to name keyword.As for the property of name please refer to the configuration file of resources/resource.json.

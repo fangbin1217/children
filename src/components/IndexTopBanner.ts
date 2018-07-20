@@ -30,6 +30,8 @@ class IndexTopBanner extends eui.Component implements  eui.UIComponent {
 		super.childrenCreated();
 	}
 	 createView(): void {
+		this.stageW = egret.MainContext.instance.stage.stageWidth;
+		this.stageH = egret.MainContext.instance.stage.stageHeight;
 		this.banner = new egret.Shape();
 		this.banner.name = "indexTopBanner";
 		let matrix:egret.Matrix = new egret.Matrix();

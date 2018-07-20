@@ -29,6 +29,12 @@ class EnterRoom extends eui.Component implements  eui.UIComponent {
 	private smallBig:any;
 
 	 createView(): void {
+
+		let sky = this.createBitmapByName("bgIndex_jpg");
+		sky.width = egret.MainContext.instance.stage.stageWidth;
+        sky.height = egret.MainContext.instance.stage.stageHeight;
+        this.addChild(sky);
+
 		//sprcon
 		this.sprcon = new egret.Sprite();
 		this.sprcon.x = 0;
@@ -95,6 +101,7 @@ class EnterRoom extends eui.Component implements  eui.UIComponent {
 		*/
         EnterRoom.Shared().getEnterRoomThis().sprcon.addChild(target2);
 
+		/*
 		//index
 		let a = IndexTopBanner.Shared();
 		a.createView();
@@ -106,6 +113,12 @@ class EnterRoom extends eui.Component implements  eui.UIComponent {
 		//this.removeChild(this.sprcon);
 		EnterRoom.Shared().getEnterRoomThis().removeChild(this.sprcon);
 		Index.Shared().getIndexThis().removeChild(this);
+		*/
+
+		Index.Shared().getIndexThis().removeChildren();
+		
+		Index.Shared().getIndexThis().createView();
+
 		
 	}
 

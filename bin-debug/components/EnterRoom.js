@@ -26,6 +26,10 @@ var EnterRoom = (function (_super) {
         _super.prototype.childrenCreated.call(this);
     };
     EnterRoom.prototype.createView = function () {
+        var sky = this.createBitmapByName("bgIndex_jpg");
+        sky.width = egret.MainContext.instance.stage.stageWidth;
+        sky.height = egret.MainContext.instance.stage.stageHeight;
+        this.addChild(sky);
         //sprcon
         this.sprcon = new egret.Sprite();
         this.sprcon.x = 0;
@@ -87,17 +91,21 @@ var EnterRoom = (function (_super) {
         target.y = -egret.MainContext.instance.stage.stageHeight*1.2/20;
         */
         EnterRoom.Shared().getEnterRoomThis().sprcon.addChild(target2);
+        /*
         //index
-        var a = IndexTopBanner.Shared();
+        let a = IndexTopBanner.Shared();
         a.createView();
         Index.Shared().getIndexThis().addChild(a);
         //this.parent.addChild(a);
-        var b = IndexCenterButton.Shared();
+        let b = IndexCenterButton.Shared();
         b.createView();
         Index.Shared().getIndexThis().addChild(b);
         //this.removeChild(this.sprcon);
         EnterRoom.Shared().getEnterRoomThis().removeChild(this.sprcon);
         Index.Shared().getIndexThis().removeChild(this);
+        */
+        Index.Shared().getIndexThis().removeChildren();
+        Index.Shared().getIndexThis().createView();
     };
     EnterRoom.prototype.getEnterRoomThis = function () {
         return this;

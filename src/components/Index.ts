@@ -23,6 +23,11 @@ class Index extends eui.Component implements  eui.UIComponent {
 	{
 		super.childrenCreated();
 	}
+
+	public banner:any;
+	public center:any;
+	public bottomer:any;
+
 	 createView(): void {
 		 
 		//set background image
@@ -33,30 +38,19 @@ class Index extends eui.Component implements  eui.UIComponent {
 
 		
 		//index top banner
-		let a = IndexTopBanner.Shared();
-		a.createView();
-		this.addChild(a);
+		this.banner = IndexTopBanner.Shared();
+		this.banner.createView();
+		this.addChild(this.banner);
 
 		//index center pictures
-		let b = IndexCenterButton.Shared();
-		b.createView();
-        this.addChild(b);
+		this.center = IndexCenterButton.Shared();
+		this.center.createView();
+        this.addChild(this.center);
 
 		//index bottom banner
-		let c = IndexBottomBanner.Shared();
-		c.createView();
-		this.addChild(c);
-		
-		
-	
-
-		/*
-		let mySprite = MySprite.Shared();
-		
-		mySprite.createView();
-		
-		this.addChild(mySprite);
-		*/
+		this.bottomer = IndexBottomBanner.Shared();
+		this.bottomer.createView();
+		this.addChild(this.bottomer);
 		
 		
     }

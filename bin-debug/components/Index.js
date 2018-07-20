@@ -32,24 +32,17 @@ var Index = (function (_super) {
         this.sky.height = egret.MainContext.instance.stage.stageHeight;
         this.addChild(this.sky);
         //index top banner
-        var a = IndexTopBanner.Shared();
-        a.createView();
-        this.addChild(a);
+        this.banner = IndexTopBanner.Shared();
+        this.banner.createView();
+        this.addChild(this.banner);
         //index center pictures
-        var b = IndexCenterButton.Shared();
-        b.createView();
-        this.addChild(b);
+        this.center = IndexCenterButton.Shared();
+        this.center.createView();
+        this.addChild(this.center);
         //index bottom banner
-        var c = IndexBottomBanner.Shared();
-        c.createView();
-        this.addChild(c);
-        /*
-        let mySprite = MySprite.Shared();
-        
-        mySprite.createView();
-        
-        this.addChild(mySprite);
-        */
+        this.bottomer = IndexBottomBanner.Shared();
+        this.bottomer.createView();
+        this.addChild(this.bottomer);
     };
     /**
      * 根据name关键字创建一个Bitmap对象。name属性请参考resources/resource.json配置文件的内容。

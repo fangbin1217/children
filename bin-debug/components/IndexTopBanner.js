@@ -29,6 +29,8 @@ var IndexTopBanner = (function (_super) {
         _super.prototype.childrenCreated.call(this);
     };
     IndexTopBanner.prototype.createView = function () {
+        this.stageW = egret.MainContext.instance.stage.stageWidth;
+        this.stageH = egret.MainContext.instance.stage.stageHeight;
         this.banner = new egret.Shape();
         this.banner.name = "indexTopBanner";
         var matrix = new egret.Matrix();

@@ -434,7 +434,65 @@ class DialogSetRoom extends eui.Component implements  eui.UIComponent {
 		let smallBig = new SmallBig(x,y,144,66);
 		let target2 = smallBig.toRecover(target);
         this.sprconB.addChild(target2);
+
+        
+
+        //请求服务器
+        let params = "p1=postP1&p2=post2";
+
+        let request = new egret.HttpRequest();
+        let config = Config.Shared();
+        let url = Config.apiUrl;
+        request.responseType = egret.HttpResponseType.TEXT;
+        request.open(url,egret.HttpMethod.POST);
+        request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded;charset=UTF-8");
+        
+        request.send(params);
+        request.once(egret.Event.COMPLETE,this.onPostComplete,this);
+        request.once(egret.IOErrorEvent.IO_ERROR,this.onPostIOError,this);
+        //request.once(egret.ProgressEvent.PROGRESS,this.onPostProgress,this);
+        //const loadingView = new LoadingUI();
+        //Index.Shared().getIndexThis().addChild(loadingView);
+        let label:egret.TextField = new egret.TextField();
+        label.text = "正在加载..";         //设置文本内容
+        label.x = egret.MainContext.instance.stage.stageWidth/2;
+        label.y = egret.MainContext.instance.stage.stageHeight/2;
+		Index.Shared().getIndexThis().addChild(label);
+
+        //调用蒙层
+        let m2 = MySprite2.Shared();
+        m2.createView();
+        Index.Shared().getIndexThis().addChild(m2);
     }
+
+    private onPostComplete(event:egret.Event):void{
+        let request = <egret.HttpRequest>event.currentTarget;
+        console.log("post data : ",request.response);
+
+        //Index.Shared().getIndexThis().removeChildren();
+        DialogSetRoom.Shared().removeChildren();
+        IndexTopBanner.Shared().removeChildren();
+        IndexCenterButton.Shared().removeChildren();
+        IndexBottomBanner.Shared().removeChildren();
+        MySprite.Shared().removeChildren();
+        MySprite2.Shared().removeChildren();
+        Index.Shared().getIndexThis().removeChildren();
+
+        let gr = GameRoom.Shared();
+        gr.createView();
+        Index.Shared().getIndexThis().addChild(gr);
+        
+    }
+
+    private onPostIOError(event:egret.IOErrorEvent):void{
+        console.log("post error : " + event);
+    }
+
+    //private onPostProgress(event:egret.ProgressEvent):void{
+      //  console.log("post progress : " + Math.floor(100*event.bytesLoaded/event.bytesTotal));
+    //}
+
+
 
 	/**
      * 根据name关键字创建一个Bitmap对象。name属性请参考resources/resource.json配置文件的内容。
