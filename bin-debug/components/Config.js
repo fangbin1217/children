@@ -28,7 +28,7 @@ var Config = (function (_super) {
     Config.prototype.getIndexThis = function () {
         return this;
     };
-    Config.apiUrl = 'http://www.myshared.fb/test.php';
+    Config.apiUrl = 'http://www.baidu.com';
     return Config;
 }(eui.Component));
 __reflect(Config.prototype, "Config", ["eui.UIComponent", "egret.DisplayObject"]);

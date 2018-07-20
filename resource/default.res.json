@@ -2,7 +2,7 @@
 	"groups": [
 		{
 			"name": "preload",
-			"keys": "description_json,gameEui_json,bgIndex_jpg,icons_json,puke_json,icons7_json,bgGame_jpg"
+			"keys": "description_json,gameEui_json,bgIndex_jpg,icons_json,puke_json,icons7_json,bgGame_jpg,loads_json,loads_png"
 		}
 	],
 	"resources": [
@@ -43,6 +43,16 @@
 			"name": "bgGame_jpg",
 			"type": "image",
 			"url": "assets/bgGame.jpg"
+		},
+		{
+			"name": "loads_json",
+			"type": "json",
+			"url": "assets/loads.json"
+		},
+		{
+			"name": "loads_png",
+			"type": "image",
+			"url": "assets/loads.png"
 		}
 	]
 }

@@ -427,6 +427,8 @@ class DialogSetRoom extends eui.Component implements  eui.UIComponent {
         this.sprconB.addChild(target2);
     }
 
+    private loadings:any;
+
     private onTouchYesbtnEnd(e: egret.TouchEvent):void{
         let target = e.$currentTarget;
         let x = (0.7*egret.MainContext.instance.stage.stageWidth - 10)/2 - 72;
@@ -453,16 +455,24 @@ class DialogSetRoom extends eui.Component implements  eui.UIComponent {
         //request.once(egret.ProgressEvent.PROGRESS,this.onPostProgress,this);
         //const loadingView = new LoadingUI();
         //Index.Shared().getIndexThis().addChild(loadingView);
-        let label:egret.TextField = new egret.TextField();
-        label.text = "正在加载..";         //设置文本内容
-        label.x = egret.MainContext.instance.stage.stageWidth/2;
-        label.y = egret.MainContext.instance.stage.stageHeight/2;
-		Index.Shared().getIndexThis().addChild(label);
+        
 
+        let data = RES.getRes("loads_json");
+        let txtr = RES.getRes("loads_png");
+        let mcFactory:egret.MovieClipDataFactory = new egret.MovieClipDataFactory( data, txtr );
+
+        let mc1 = new egret.MovieClip( mcFactory.generateMovieClipData('loads') );
+        mc1.x = egret.MainContext.instance.stage.stageWidth/2;
+        mc1.y = egret.MainContext.instance.stage.stageHeight/2;
+        Index.Shared().getIndexThis().addChild( mc1 );
+        mc1.play(20);
+        //console.log(mc1);
         //调用蒙层
+        
         let m2 = MySprite2.Shared();
         m2.createView();
         Index.Shared().getIndexThis().addChild(m2);
+        
     }
 
     private onPostComplete(event:egret.Event):void{
@@ -485,7 +495,120 @@ class DialogSetRoom extends eui.Component implements  eui.UIComponent {
     }
 
     private onPostIOError(event:egret.IOErrorEvent):void{
+
+        
+
+        //创建对话框父容器
+		let a = new egret.Sprite();
+		Index.Shared().getIndexThis().addChild( a );
+		a.x = 0.15*egret.MainContext.instance.stage.stageWidth;
+		a.y = 0.15*egret.MainContext.instance.stage.stageHeight;
+        a.width = 0.7*egret.MainContext.instance.stage.stageWidth;
+        a.height = 0.7*egret.MainContext.instance.stage.stageHeight;
+        let bg = new egret.Shape();
+        //0xF5F5DC  0x9C9C9C 0.4
+        bg.graphics.beginFill(0x9C9C9C, 0.4);
+        bg.graphics.drawRoundRect(0, 0, 0.7*egret.MainContext.instance.stage.stageWidth, 0.7*egret.MainContext.instance.stage.stageHeight, 10, 10);
+        bg.graphics.endFill();
+        a.addChild(bg);
+
+        //容器1 标题栏
+        let b = new egret.Sprite();
+        b.x = 0;
+		b.y = 0;
+        b.width = 0.7*egret.MainContext.instance.stage.stageWidth;
+        b.height = 0.7*egret.MainContext.instance.stage.stageHeight/7;
+		a.addChild( b);
+
+        
+        let label:egret.TextField = new egret.TextField();
+        label.text = "提示";         //设置文本内容
+        label.size = 0.1*egret.MainContext.instance.stage.stageHeight-6;                //设置字号大小
+        label.textColor = 0x336699;     //设置字体颜色
+        label.fontFamily = "YouYuan";     //设置字体样式
+        label.textAlign = egret.VerticalAlign.MIDDLE;
+        label.x = 0.35*egret.MainContext.instance.stage.stageWidth-(0.1*egret.MainContext.instance.stage.stageHeight-6);
+        label.strokeColor = 0x6699cc;   //描边颜色
+        label.stroke = 2;               //描边宽度
+		b.addChild(label);
+
+
+        //容器2 内容栏
+        this.errorC = new egret.Sprite();
+        this.errorC.x = 0;
+		this.errorC.y = 0.1*egret.MainContext.instance.stage.stageHeight;
+        this.errorC.width = 0.7*egret.MainContext.instance.stage.stageWidth;
+        this.errorC.height = 0.6*egret.MainContext.instance.stage.stageHeight;
+		a.addChild( this.errorC );
+
+        //bg
+        let mySpace = 5;
+        let d = new egret.Shape();
+        d.x = 5;
+        d.y = 0;
+        d.graphics.beginFill(0xF5F5DC);
+        d.graphics.drawRoundRect(0, 0, 0.7*egret.MainContext.instance.stage.stageWidth - 2*mySpace, 0.7*6*egret.MainContext.instance.stage.stageHeight/7 - mySpace,10,10);
+        d.graphics.endFill();
+        this.errorC.addChild(d);
+
+        let firstLabel2:egret.TextField = new egret.TextField();
+        firstLabel2.text = 'ERROR:' + egret.IOErrorEvent.IO_ERROR;
+        firstLabel2.size = 20;                //设置字号大小
+        firstLabel2.textColor = 0xf76807;     //设置字体颜色
+        firstLabel2.fontFamily = "YouYuan";     //设置字体样式
+        firstLabel2.x = 100;
+        firstLabel2.y = 100;
+        this.errorC.addChild(firstLabel2);
+
+        //yes bt
+        let btn = this.createBitmapByName('icons7_json.sure');	 
+        btn.touchEnabled = true; //设置可以进行触摸
+        btn.once(egret.TouchEvent.TOUCH_BEGIN, this.errorBegin, this);
+        btn.once(egret.TouchEvent.TOUCH_END, this.errorEnd, this);
+        let x = (0.7*egret.MainContext.instance.stage.stageWidth - 10)/2 - 72;
+        let y = 0.6*egret.MainContext.instance.stage.stageHeight - 80;
+        btn.x = x;
+        btn.y = y;
+        btn.width = 144;
+        btn.height = 66;
+        this.errorC.addChild(btn);
+        
+        let smallBig = new SmallBig(x,y,144,66);
+		smallBig.setPosition(btn);
         console.log("post error : " + event);
+    }
+
+    //private errorA:any;
+
+    //private errorB:any;
+
+    private errorC:any;
+
+    private errorBegin(e: egret.TouchEvent):void{
+        let target = e.$currentTarget;
+        let x = (0.7*egret.MainContext.instance.stage.stageWidth - 10)/2 - 72;
+        let y = 0.6*egret.MainContext.instance.stage.stageHeight - 80;
+		let smallBig = new SmallBig(x,y,144,66);
+		let target2 = smallBig.toSmaller(target, 0.8);
+        this.errorC.addChild(target2);
+    }
+
+    private errorEnd(e: egret.TouchEvent):void{
+        let target = e.$currentTarget;
+        let x = (0.7*egret.MainContext.instance.stage.stageWidth - 10)/2 - 72;
+        let y = 0.6*egret.MainContext.instance.stage.stageHeight - 80;
+		let smallBig = new SmallBig(x,y,144,66);
+        let target2 = smallBig.toRecover(target);
+        this.errorC.addChild(target2);
+
+        DialogSetRoom.Shared().removeChildren();
+        IndexTopBanner.Shared().removeChildren();
+        IndexCenterButton.Shared().removeChildren();
+        IndexBottomBanner.Shared().removeChildren();
+        MySprite.Shared().removeChildren();
+        MySprite2.Shared().removeChildren();
+        Index.Shared().getIndexThis().removeChildren();
+        Index.Shared().getIndexThis().createView();
     }
 
     //private onPostProgress(event:egret.ProgressEvent):void{

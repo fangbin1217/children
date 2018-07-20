@@ -77,21 +77,13 @@ var IndexCenterButton = (function (_super) {
         /****************MY ROOM***********************/
         this.button3 = this.createBitmapByName('icons_json.myRoom');
         this.button3.alpha = 0.9;
-        /*
-        this.button3.x = this.stageW;
-        this.button3.y = this.stageH * 5.2/10 - this.stageH * 2.5/20;
-        this.button3.width = this.stageW * 2.8/10;
-        this.button3.height = this.stageH * 2.5/10;
-        this.button3.anchorOffsetX = -this.stageW * 2.8/20;
-        this.button3.anchorOffsetY = -this.stageH * 2.5/20;
-        */
         this.button3.x = this.stageW;
         this.button3.y = this.stageH * 5.2 / 10;
         this.button3.width = this.stageW * 2.8 / 10;
         this.button3.height = this.stageH * 2.5 / 10;
         this.addChild(this.button3);
+        //动画
         var tw3 = egret.Tween.get(this.button3);
-        //tw3.to( {x:this.stageW * 5.2/10 - this.stageW * 2.8/20,y:this.stageH * 5.2/10 - this.stageH * 2.5/20}, 700,egret.Ease.sineOut );
         tw3.to({ x: this.stageW * 5.2 / 10, y: this.stageH * 5.2 / 10 }, 700, egret.Ease.sineOut).call(this.threeCall);
         /****************MY ROOM***********************/
     };
