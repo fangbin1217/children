@@ -1,0 +1,15 @@
+{"file":"icons10.png","frames":{
+"setRoom":{"x":1,"y":1,"w":200,"h":181,"offX":0,"offY":0,"sourceW":200,"sourceH":181},
+"enterRoom":{"x":203,"y":1,"w":250,"h":114,"offX":0,"offY":0,"sourceW":250,"sourceH":114},
+"myRoom":{"x":203,"y":117,"w":250,"h":109,"offX":0,"offY":0,"sourceW":250,"sourceH":109},
+"bomb":{"x":303,"y":294,"w":64,"h":64,"offX":0,"offY":0,"sourceW":64,"sourceH":64},
+"clock":{"x":435,"y":228,"w":64,"h":64,"offX":0,"offY":0,"sourceW":64,"sourceH":64},
+"first":{"x":369,"y":228,"w":64,"h":64,"offX":0,"offY":0,"sourceW":64,"sourceH":64},
+"noMsg":{"x":128,"y":297,"w":64,"h":53,"offX":0,"offY":0,"sourceW":64,"sourceH":53},
+"ready":{"x":67,"y":297,"w":59,"h":64,"offX":2,"offY":0,"sourceW":64,"sourceH":64},
+"second":{"x":303,"y":228,"w":64,"h":64,"offX":0,"offY":0,"sourceW":64,"sourceH":64},
+"spring":{"x":1,"y":297,"w":64,"h":64,"offX":0,"offY":0,"sourceW":64,"sourceH":64},
+"third":{"x":435,"y":294,"w":64,"h":64,"offX":0,"offY":0,"sourceW":64,"sourceH":64},
+"victory":{"x":1,"y":228,"w":300,"h":67,"offX":0,"offY":0,"sourceW":300,"sourceH":67},
+"avatar":{"x":369,"y":294,"w":64,"h":64,"offX":0,"offY":0,"sourceW":64,"sourceH":64},
+"diamond":{"x":455,"y":1,"w":24,"h":20,"offX":0,"offY":2,"sourceW":24,"sourceH":24}}}

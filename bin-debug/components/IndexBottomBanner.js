@@ -49,7 +49,7 @@ var IndexBottomBanner = (function (_super) {
     };
     IndexBottomBanner.prototype.btRewad = function () {
         //reward
-        this.bt1 = this.createBitmapByName('icons_json.awardCup');
+        this.bt1 = this.createBitmapByName(Config.imageJsonPre + 'rewards');
         this.bt1.touchEnabled = true; //设置可以进行触摸
         this.bt1.x = this.stageW / 5;
         this.bt1.y = this.stageH;

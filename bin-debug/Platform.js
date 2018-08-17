@@ -41,14 +41,79 @@ var DebugPlatform = (function () {
     }
     DebugPlatform.prototype.getUserInfo = function () {
         return __awaiter(this, void 0, void 0, function () {
+            var _this = this;
             return __generator(this, function (_a) {
-                return [2 /*return*/, { nickName: "username" }];
+                return [2 /*return*/, new Promise(function (resolve, reject) {
+                        var params = "p1=postP1&p2=post2";
+                        var getInfoUrl = Config.chickrenUrl + 'test/getuserinfo';
+                        var request = new egret.HttpRequest();
+                        request.responseType = egret.HttpResponseType.TEXT;
+                        //设置为 POST 请求
+                        request.open(getInfoUrl, egret.HttpMethod.POST);
+                        request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded;charset=UTF-8");
+                        request.send(params);
+                        request.once(egret.Event.COMPLETE, function (event) {
+                            var request = event.currentTarget;
+                            var res = JSON.parse(request.response);
+                            //console.log(res);
+                            if (res.code == 0) {
+                                var userInfo = res.data;
+                                //设置本地缓存
+                                localStorage.setItem('USER_ID', userInfo.USER_ID);
+                                localStorage.setItem('NICK_NAME', userInfo.NICK_NAME);
+                                localStorage.setItem('AVATOR', userInfo.AVATOR);
+                                localStorage.setItem('DIAMOND', userInfo.DIAMOND);
+                                //加载服务端图片
+                                var url = Config.chickrenUrl + userInfo.AVATOR;
+                                RES.getResByUrl(url, function (event, url) {
+                                    var texture = event;
+                                    Config.avator = texture;
+                                    resolve(res);
+                                    //console.log(Config.avator);
+                                }, _this, RES.ResourceItem.TYPE_IMAGE);
+                            }
+                            else {
+                                //如果获取用户信息失败，弹窗提示去登录
+                                resolve(res);
+                            }
+                            //resolve(res);
+                        }, _this);
+                        request.once(egret.IOErrorEvent.IO_ERROR, function (event) {
+                            reject('io error');
+                        }, _this);
+                    })];
+            });
+        });
+    };
+    DebugPlatform.prototype.getUserAvator = function () {
+        return __awaiter(this, void 0, void 0, function () {
+            var _this = this;
+            var AVATOR;
+            return __generator(this, function (_a) {
+                AVATOR = localStorage.getItem('AVATOR');
+                if (AVATOR) {
+                    return [2 /*return*/, new Promise(function (resolve, reject) {
+                            //加载服务端图片
+                            var url = Config.chickrenUrl + AVATOR;
+                            RES.getResByUrl(url, function (event, url) {
+                                var texture = event;
+                                Config.avator = texture;
+                                resolve(texture);
+                                //console.log(Config.avator);
+                            }, _this, RES.ResourceItem.TYPE_IMAGE);
+                        })];
+                }
+                return [2 /*return*/];
             });
         });
     };
     DebugPlatform.prototype.login = function () {
         return __awaiter(this, void 0, void 0, function () {
+            var loginUrl;
             return __generator(this, function (_a) {
+                loginUrl = Config.chickrenUrl + 'test/login';
+                //console.log(loginUrl);
+                window.location.href = loginUrl;
                 return [2 /*return*/];
             });
         });

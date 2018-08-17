@@ -69,7 +69,7 @@ var DialogSetRoom = (function (_super) {
         label.strokeColor = 0x6699cc; //描边颜色
         label.stroke = 2; //描边宽度
         this.sprconA.addChild(label);
-        this.close = this.createBitmapByName('icons7_json.close2');
+        this.close = this.createBitmapByName(Config.imageJsonPre + 'close6');
         this.close.touchEnabled = true; //设置可以进行触摸
         this.close.addEventListener(egret.TouchEvent.TOUCH_BEGIN, this.onTouchClose, this);
         this.close.width = 64;
@@ -91,7 +91,7 @@ var DialogSetRoom = (function (_super) {
         this.sprconB.addChild(this.dialog);
         this.setLineSpace();
         //yes bt
-        this.yesBtn = this.createBitmapByName('icons7_json.sure');
+        this.yesBtn = this.createBitmapByName(Config.imageJsonPre + 'sure');
         this.yesBtn.touchEnabled = true; //设置可以进行触摸
         this.yesBtn.addEventListener(egret.TouchEvent.TOUCH_BEGIN, this.onTouchYesbtnBegin, this);
         this.yesBtn.addEventListener(egret.TouchEvent.TOUCH_END, this.onTouchYesbtnEnd, this);
@@ -474,7 +474,7 @@ var DialogSetRoom = (function (_super) {
         firstLabel2.y = 100;
         this.errorC.addChild(firstLabel2);
         //yes bt
-        var btn = this.createBitmapByName('icons7_json.sure');
+        var btn = this.createBitmapByName(Config.imageJsonPre + 'sure');
         btn.touchEnabled = true; //设置可以进行触摸
         btn.once(egret.TouchEvent.TOUCH_BEGIN, this.errorBegin, this);
         btn.once(egret.TouchEvent.TOUCH_END, this.errorEnd, this);

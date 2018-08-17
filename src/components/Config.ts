@@ -2,7 +2,15 @@ class Config extends eui.Component implements  eui.UIComponent {
 
 	private static shared:Config;
 
-    static apiUrl = 'http://www.myshared.fb/test.php';
+	static chickrenUrl = 'http://api.chickren.fb/';
+
+    static apiUrl = 'http://api.chickren.fb/room/save';
+
+	static imageJsonPre = 'icons9_json.';
+
+	static imageJsonBtn = 'icons10_json.';
+
+	static avator:any;
 
 	public static Shared() {
         if(Config.shared == null) {
@@ -10,6 +18,7 @@ class Config extends eui.Component implements  eui.UIComponent {
         }
         return Config.shared;
     }
+
 
 	public constructor() {
 		super();

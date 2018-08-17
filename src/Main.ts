@@ -60,14 +60,20 @@ class Main extends eui.UILayer {
     }
 
     private async runGame() {
-        await this.loadResource()
-        this.createGameScene();
-        const result = await RES.getResAsync("description_json")
-        this.startAnimation(result);
-        await platform.login();
-        const userInfo = await platform.getUserInfo();
-        console.log(userInfo);
-
+        await this.loadResource();
+        let getUserInfo = await platform.getUserInfo();
+        if (getUserInfo) {
+            console.log(getUserInfo);
+            //get info success
+            if (getUserInfo.code == 0) {
+                let datas = getUserInfo.data;
+                this.createGameScene();
+                const result = await RES.getResAsync("description_json");
+                this.startAnimation(result);
+            } else {
+                await platform.login();
+            }
+        }
     }
 
     private async loadResource() {

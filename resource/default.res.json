@@ -2,7 +2,7 @@
 	"groups": [
 		{
 			"name": "preload",
-			"keys": "description_json,gameEui_json,bgIndex_jpg,icons_json,puke_json,icons7_json,bgGame_jpg,loads_json,loads_png"
+			"keys": "description_json,gameEui_json,bgIndex_jpg,puke_json,bgGame_jpg,loads_json,loads_png,icons9_json,icons10_json"
 		}
 	],
 	"resources": [
@@ -22,22 +22,10 @@
 			"url": "assets/bgIndex.jpg"
 		},
 		{
-			"name": "icons_json",
-			"type": "sheet",
-			"url": "assets/icons.json",
-			"subkeys": "enterRoom,myRoom,quickEnter,setRoom,avatar,awardCup,bomb,clock,diamond,first,message,setUp,share,sitDown,spring,third,victory,border,button_down,button_up,checkbox_select_disabled,checkbox_select_down,checkbox_select_up,checkbox_unselect,goBack,handle,header,off,on,radiobutton_select_disabled,radiobutton_select_down,radiobutton_select_up,radiobutton_unselect,roundthumb,selected,thumb_pb,thumb,track_pb,track_sb,track,second"
-		},
-		{
 			"name": "puke_json",
 			"type": "sheet",
 			"url": "assets/puke.json",
 			"subkeys": "spade_a,spade_2,spade_3,spade_4,spade_5,spade_6,spade_7,spade_8,spade_9,spade_10,spade_j,spade_q,spade_k,heart_k,heart_q,heart_j,heart_10,heart_9,heart_8,heart_7,heart_6,heart_5,heart_4,heart_3,heart_2,heart_a,club_k,club_q,club_j,club_10,club_9,club_8,club_7,club_6,club_5,club_4,club_3,club_2,club_a,diamond_a,diamond_2,diamond_3,diamond_4,diamond_5,diamond_6,diamond_7,diamond_8,diamond_9,diamond_10,diamond_j,diamond_q,diamond_k,black_joker,red_joker,puke_bg"
-		},
-		{
-			"name": "icons7_json",
-			"type": "sheet",
-			"url": "assets/icons7.json",
-			"subkeys": "up,down,pointer,logo,sure,startGame,cancel,giveUp,share,set,rewards,reward2,message,gift,close6,close5,close,close2,sorts,charge,remind,label,ready,waiting,selected,radioChecked,radioUncheck,unselect,buttonOn,buttonOff,right,left,backward,checkbox_unselect,checkbox_select_up,checkbox_select_down,checkbox_select_disabled,radiobutton_unselect,radiobutton_select_up,radiobutton_select_down,radiobutton_select_disabled,handle,off,on,login"
 		},
 		{
 			"name": "bgGame_jpg",
@@ -53,6 +41,18 @@
 			"name": "loads_png",
 			"type": "image",
 			"url": "assets/loads.png"
+		},
+		{
+			"name": "icons9_json",
+			"type": "sheet",
+			"url": "assets/icons9.json",
+			"subkeys": "seat1,seat6,seat2,seat3,seat4,seat5,up,down,pointer,share,set,rewards,reward2,message,gift,close6,close5,close,close2,sorts,charge,remind,label,ready,waiting,selected,radioChecked,radioUncheck,unselect,buttonOn,buttonOff,right,left,backward,checkbox_unselect,checkbox_select_up,checkbox_select_down,checkbox_select_disabled,radiobutton_unselect,radiobutton_select_up,radiobutton_select_down,radiobutton_select_disabled,handle,off,on,cancel,login,startGame,sure"
+		},
+		{
+			"name": "icons10_json",
+			"type": "sheet",
+			"url": "assets/icons10.json",
+			"subkeys": "setRoom,enterRoom,myRoom,bomb,clock,first,noMsg,ready,second,spring,third,victory,avatar,diamond"
 		}
 	]
 }

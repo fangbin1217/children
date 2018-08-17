@@ -30,6 +30,7 @@ class Index extends eui.Component implements  eui.UIComponent {
 
 	 createView(): void {
 		 
+		 
 		//set background image
         this.sky = this.createBitmapByName("bgIndex_jpg");
 		this.sky.width = egret.MainContext.instance.stage.stageWidth;

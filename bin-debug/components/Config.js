@@ -28,7 +28,10 @@ var Config = (function (_super) {
     Config.prototype.getIndexThis = function () {
         return this;
     };
-    Config.apiUrl = 'http://www.baidu.com';
+    Config.chickrenUrl = 'http://api.chickren.fb/';
+    Config.apiUrl = 'http://api.chickren.fb/room/save';
+    Config.imageJsonPre = 'icons9_json.';
+    Config.imageJsonBtn = 'icons10_json.';
     return Config;
 }(eui.Component));
 __reflect(Config.prototype, "Config", ["eui.UIComponent", "egret.DisplayObject"]);

@@ -50,7 +50,7 @@ class EnterRoom extends eui.Component implements  eui.UIComponent {
         topMask.graphics.endFill();
         this.sprcon.addChild(topMask);
 		//back button 
-		this.goBack = this.createBitmapByName('icons7_json.backward');	        
+		this.goBack = this.createBitmapByName(Config.imageJsonPre+'backward');	        
         this.goBack.touchEnabled = true; //设置可以进行触摸
 		this.goBack.addEventListener(egret.TouchEvent.TOUCH_BEGIN, this.onTouchSmall, this);
 		this.goBack.addEventListener(egret.TouchEvent.TOUCH_END, this.onTouchBackIndex, this);

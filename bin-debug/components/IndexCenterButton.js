@@ -51,7 +51,7 @@ var IndexCenterButton = (function (_super) {
     };
     IndexCenterButton.prototype.createView = function () {
         /****************SET ROOM***********************/
-        this.button = this.createBitmapByName('icons_json.setRoom');
+        this.button = this.createBitmapByName(Config.imageJsonBtn + 'setRoom');
         this.button.alpha = 0.9;
         this.button.x = -this.stageW * 2.8 / 10;
         this.button.y = this.stageH * 2.3 / 10;
@@ -63,7 +63,7 @@ var IndexCenterButton = (function (_super) {
         tw.to({ x: this.stageW * 2 / 10, y: this.stageH * 2.3 / 10 }, 700, egret.Ease.sineOut).call(this.oneCall);
         /****************SET ROOM***********************/
         /****************ENTER ROOM***********************/
-        this.button2 = this.createBitmapByName('icons_json.enterRoom');
+        this.button2 = this.createBitmapByName(Config.imageJsonBtn + 'enterRoom');
         this.button2.alpha = 0.9;
         this.button2.x = this.stageW;
         this.button2.y = this.stageH * 2.3 / 10;
@@ -75,7 +75,7 @@ var IndexCenterButton = (function (_super) {
         tw2.to({ x: this.stageW * 5.2 / 10, y: this.stageH * 2.3 / 10 }, 700, egret.Ease.sineOut).call(this.twoCall);
         /****************ENTER ROOM***********************/
         /****************MY ROOM***********************/
-        this.button3 = this.createBitmapByName('icons_json.myRoom');
+        this.button3 = this.createBitmapByName(Config.imageJsonBtn + 'myRoom');
         this.button3.alpha = 0.9;
         this.button3.x = this.stageW;
         this.button3.y = this.stageH * 5.2 / 10;
